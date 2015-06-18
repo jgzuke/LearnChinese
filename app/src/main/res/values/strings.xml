@@ -11,4 +11,8 @@
 
     <string name="main_activity_drawer_settings">Settings</string>
     <string name="main_activity_drawer_translate">Translate</string>
+
+    <string name="error_file_set">Error setting up audio recording</string>
+    <string name="error_record">Error recording</string>
+    <string name="error_play">Error playing file</string>
 </resources>

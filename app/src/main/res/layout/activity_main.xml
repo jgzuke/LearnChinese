@@ -26,14 +26,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/app_blue"
-        materialdesign:iconDrawable="@drawable/ic_play_arrow_white_18dp" />
+        materialdesign:iconDrawable="@drawable/ic_play_arrow_white_36dp" />
 
     <com.gc.materialdesign.views.ButtonFloat
         android:id="@+id/menu_correct_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/app_orange"
-        materialdesign:iconDrawable="@drawable/ic_play_arrow_white_18dp" />
+        materialdesign:iconDrawable="@drawable/ic_play_arrow_white_36dp" />
 
 
     <com.gc.materialdesign.views.ButtonFloat
@@ -42,6 +42,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/app_blue"
-        materialdesign:iconDrawable="@drawable/ic_mic_white_24dp" />
+        materialdesign:iconDrawable="@drawable/ic_mic_white_36dp" />
 
 </LinearLayout>
