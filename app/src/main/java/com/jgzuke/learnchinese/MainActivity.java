@@ -38,6 +38,9 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
         mRecordBtn = (ButtonFloat) findViewById(R.id.menu_record_btn);
         mPlayRecordingBtn = (ButtonFloat) findViewById(R.id.menu_recording_btn);
         mPlayCorrectBtn = (ButtonFloat) findViewById(R.id.menu_correct_btn);
+        mRecordBtn.setOnClickListener(this);
+        mPlayRecordingBtn.setOnClickListener(this);
+        mPlayCorrectBtn.setOnClickListener(this);
         mAudioRecorder = new MyAudioRecorder(this);
     }
 

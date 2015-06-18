@@ -12,8 +12,8 @@ import java.io.IOException;
 public class MyAudioRecorder {
     private static final String LOG_TAG = "MyAudioRecorder";
 
-    private static String mRecordedFileName = null;
-    private static String mCorrectFileName = null;
+    private static final String mRecordedFileName = "learn_chinese_recorded_sample";
+    private static final String mCorrectFileName = "learn_chinese_correct_sample";
     private MediaRecorder mRecorder = null;
     private MediaPlayer mPlayer = null;
     private MainActivity mActivity;
@@ -31,11 +31,10 @@ public class MyAudioRecorder {
 
         try {
             mRecorder.prepare();
+            mRecorder.start();
         } catch (IOException e) {
             Log.e(LOG_TAG, "prepare() failed");
         }
-
-        mRecorder.start();
     }
 
     public void startPlaying(boolean recordedVersion) {
