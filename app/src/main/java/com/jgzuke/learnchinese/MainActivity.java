@@ -83,38 +83,40 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
     }
 
     public void clickRecord() {
-        if(!mIsRecording) {
-            mRecordBtn.setBackgroundResource(R.color.recording_red);
-            mRecordBtn.setDrawableIcon(mIconStopRecord);
+        mIsRecording = !mIsRecording;
+        if(mIsRecording) {
+            setFloatButtonView(mRecordBtn, R.color.recording_red, mIconStopRecord);
             mAudioRecorder.startRecording();
         } else {
-            mRecordBtn.setBackgroundResource(R.color.app_blue);
-            mRecordBtn.setDrawableIcon(mIconRecord);
+            setFloatButtonView(mRecordBtn, R.color.app_blue, mIconRecord);
             mAudioRecorder.stopRecording();
         }
     }
 
     public void clickPlayRecording() {
-        if(!mIsPlayingRecording) {
-            mRecordBtn.setBackgroundResource(R.color.playing_green);
-            mRecordBtn.setDrawableIcon(mIconPause);
+        mIsPlayingRecording = !mIsPlayingRecording;
+        if(mIsPlayingRecording) {
+            setFloatButtonView(mPlayRecordingBtn, R.color.playing_green, mIconPause);
             mAudioRecorder.startPlaying(true);
         } else {
-            mRecordBtn.setBackgroundResource(R.color.app_blue);
-            mRecordBtn.setDrawableIcon(mIconPlay);
+            setFloatButtonView(mPlayRecordingBtn, R.color.app_blue, mIconPlay);
             mAudioRecorder.stopPlaying();
         }
     }
 
     public void clickPlayCorrect() {
-        if(!mIsPlayingCorrect) {
-            mRecordBtn.setBackgroundResource(R.color.playing_green);
-            mRecordBtn.setDrawableIcon(mIconPause);
+        mIsPlayingCorrect = !mIsPlayingCorrect;
+        if(mIsPlayingCorrect) {
+            setFloatButtonView(mPlayCorrectBtn, R.color.playing_green, mIconPause);
             mAudioRecorder.startPlaying(false);
         } else {
-            mRecordBtn.setBackgroundResource(R.color.app_orange);
-            mRecordBtn.setDrawableIcon(mIconPlay);
+            setFloatButtonView(mPlayCorrectBtn, R.color.app_orange, mIconPlay);
             mAudioRecorder.stopPlaying();
         }
+    }
+
+    private void setFloatButtonView(ButtonFloat button, int colorID, Drawable drawable) {
+        button.setBackgroundResource(colorID);
+        button.setDrawableIcon(drawable);
     }
 }
