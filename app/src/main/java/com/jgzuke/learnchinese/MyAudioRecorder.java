@@ -1,12 +1,5 @@
 package com.jgzuke.learnchinese;
 
-import android.os.Bundle;
-import android.os.Environment;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.content.Context;
 import android.util.Log;
 import android.media.MediaRecorder;
 import android.media.MediaPlayer;
@@ -24,10 +17,6 @@ public class MyAudioRecorder {
     private MediaRecorder mRecorder = null;
     private MediaPlayer mPlayer = null;
     private MainActivity mActivity;
-
-    private boolean mIsRecording = false;
-    private boolean mIsPlayingRecording = false;
-    private boolean mIsPlayingCorrect = false;
 
     public MyAudioRecorder(MainActivity activity) {
         mActivity = activity;
@@ -49,7 +38,8 @@ public class MyAudioRecorder {
         mRecorder.start();
     }
 
-    public void startPlaying(String fileName) {
+    public void startPlaying(boolean recordedVersion) {
+        String fileName = recordedVersion? mRecordedFileName : mCorrectFileName;
         mPlayer = new MediaPlayer();
         try {
             mPlayer.setDataSource(fileName);
@@ -57,30 +47,6 @@ public class MyAudioRecorder {
             mPlayer.start();
         } catch (IOException e) {
             Log.e(LOG_TAG, "prepare() failed");
-        }
-    }
-
-    public void clickRecord() {
-        if(mIsRecording) {
-            startRecording();
-        } else {
-            stopRecording();
-        }
-    }
-
-    public void clickPlayRecording() {
-        if(mIsPlayingRecording) {
-            startPlaying(mRecordedFileName);
-        } else {
-            stopPlaying();
-        }
-    }
-
-    public void clickPlayCorrect() {
-        if(mIsPlayingCorrect) {
-            startPlaying(mCorrectFileName);
-        } else {
-            stopPlaying();
         }
     }
 

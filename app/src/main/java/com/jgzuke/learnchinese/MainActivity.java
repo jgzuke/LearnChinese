@@ -1,5 +1,7 @@
 package com.jgzuke.learnchinese;
 
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,7 +20,16 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
     private ButtonFloat mRecordBtn;
     private ButtonFloat mPlayRecordingBtn;
     private ButtonFloat mPlayCorrectBtn;
+
+    private boolean mIsRecording = false;
+    private boolean mIsPlayingRecording = false;
+    private boolean mIsPlayingCorrect = false;
     private MyAudioRecorder mAudioRecorder;
+
+    private Drawable mIconPlay;
+    private Drawable mIconPause;
+    private Drawable mIconRecord;
+    private Drawable mIconStopRecord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +39,14 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
         mPlayRecordingBtn = (ButtonFloat) findViewById(R.id.menu_recording_btn);
         mPlayCorrectBtn = (ButtonFloat) findViewById(R.id.menu_correct_btn);
         mAudioRecorder = new MyAudioRecorder(this);
+    }
+
+    private void getDrawables() {
+        Resources res = getResources();
+        mIconPlay = res.getDrawable(R.drawable.ic_play_arrow_white_18dp);
+        mIconPause = res.getDrawable(R.drawable.ic_play_arrow_white_18dp);
+        mIconRecord = res.getDrawable(R.drawable.ic_play_arrow_white_18dp);
+        mIconStopRecord = res.getDrawable(R.drawable.ic_play_arrow_white_18dp);
     }
 
     @Override
@@ -49,14 +68,50 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
     public void onClick(View v) {
         switch(v.getId()) {
             case R.id.menu_record_btn:
-                mAudioRecorder.clickRecord();
+                clickRecord();
                 break;
             case R.id.menu_recording_btn:
-                mAudioRecorder.clickPlayRecording();
+                clickPlayRecording();
                 break;
             case R.id.menu_correct_btn:
-                mAudioRecorder.clickPlayCorrect();
+                clickPlayCorrect();
                 break;
+        }
+    }
+
+    public void clickRecord() {
+        if(!mIsRecording) {
+            mRecordBtn.setBackgroundResource(R.color.recording_red);
+            mRecordBtn.setDrawableIcon(mIconStopRecord);
+            mAudioRecorder.startRecording();
+        } else {
+            mRecordBtn.setBackgroundResource(R.color.app_blue);
+            mRecordBtn.setDrawableIcon(mIconRecord);
+            mAudioRecorder.stopRecording();
+        }
+    }
+
+    public void clickPlayRecording() {
+        if(!mIsPlayingRecording) {
+            mRecordBtn.setBackgroundResource(R.color.playing_green);
+            mRecordBtn.setDrawableIcon(mIconPause);
+            mAudioRecorder.startPlaying(true);
+        } else {
+            mRecordBtn.setBackgroundResource(R.color.app_blue);
+            mRecordBtn.setDrawableIcon(mIconPlay);
+            mAudioRecorder.stopPlaying();
+        }
+    }
+
+    public void clickPlayCorrect() {
+        if(!mIsPlayingCorrect) {
+            mRecordBtn.setBackgroundResource(R.color.playing_green);
+            mRecordBtn.setDrawableIcon(mIconPause);
+            mAudioRecorder.startPlaying(false);
+        } else {
+            mRecordBtn.setBackgroundResource(R.color.app_orange);
+            mRecordBtn.setDrawableIcon(mIconPlay);
+            mAudioRecorder.stopPlaying();
         }
     }
 }
