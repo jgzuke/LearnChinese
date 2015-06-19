@@ -27,6 +27,7 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0+'
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
     compile 'com.google.apis:google-api-services-translate:v2-rev41-1.20.0'
+    compile files('libs/android-text-to-speech-2.0.0.jar')
     //compile 'com.android.support:appcompat-v7:22.1.1+'
     //compile 'com.afollestad:material-dialogs:0.7.5.5'
 }

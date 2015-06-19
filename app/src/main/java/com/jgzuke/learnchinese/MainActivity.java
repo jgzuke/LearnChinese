@@ -192,7 +192,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-        invalidateText((String) s);
+        invalidateText(s.toString());
     }
 
     @Override
