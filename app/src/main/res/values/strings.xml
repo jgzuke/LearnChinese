@@ -15,4 +15,8 @@
     <string name="error_file_set">Error setting up audio recording</string>
     <string name="error_record">Error recording</string>
     <string name="error_play">Error playing file</string>
+
+    <string name="translate_input_default">Text to translate</string>
+
+    <string name="translate_output_default">Translated text</string>
 </resources>
